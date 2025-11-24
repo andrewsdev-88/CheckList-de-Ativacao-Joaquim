@@ -1,0 +1,755 @@
+html = r"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Onboarding Oficial - Take Já | Joaquim Oliveira</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONTES -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cor-fundo-gradiente-1: #050816;
+            --cor-fundo-gradiente-2: #111827;
+            --cor-coral: #ff4b6e;
+            --cor-coral-escuro: #e03557;
+            --cor-verde: #00f5b0;
+            --cor-areia: #f4ebe2;
+            --cor-azul-profundo: #030712;
+            --cor-texto: #111827;
+            --cor-texto-suave: #4b5563;
+            --radius-card: 16px;
+            --shadow-card: 0 18px 45px rgba(15, 23, 42, 0.35);
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: radial-gradient(circle at top left, #1f2937 0%, #020617 55%, #000000 100%);
+            padding: 20px;
+            min-height: 100vh;
+            color: var(--cor-texto);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto 40px;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+        }
+
+        /* HEADER */
+
+        .header {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 32px;
+            padding: 42px 48px 40px;
+            background: radial-gradient(circle at top left, #111827 0%, #020617 45%, #000000 100%);
+            color: #f9fafb;
+            align-items: center;
+        }
+
+        .header-main {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            font-size: 0.76rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .brand-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 20%, #fef3c7 0%, #f97316 40%, #b91c1c 100%);
+            box-shadow: 0 0 18px rgba(248, 113, 113, 0.9);
+        }
+
+        .logo-take {
+            margin-top: 18px;
+            font-family: "Playfair Display", serif;
+            font-size: 2.1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .logo-take span {
+            color: var(--cor-verde);
+        }
+
+        .header-main h1 {
+            margin-top: 16px;
+            font-family: "Playfair Display", serif;
+            font-size: 2.3rem;
+            line-height: 1.15;
+        }
+
+        .header-main h1 span {
+            color: var(--cor-coral);
+        }
+
+        .header-sub {
+            margin-top: 10px;
+            font-size: 0.96rem;
+            color: #e5e7eb;
+            max-width: 480px;
+        }
+
+        .header-meta {
+            margin-top: 22px;
+            font-size: 0.86rem;
+            color: #9ca3af;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        .header-meta strong {
+            color: #e5e7eb;
+        }
+
+        .header-visual {
+            position: relative;
+            height: 190px;
+        }
+
+        .orb {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 20%, #ffffff 0%, #00f5b0 42%, #22c55e 65%, #0f172a 100%);
+            box-shadow:
+                0 0 60px rgba(34, 197, 94, 0.9),
+                0 0 120px rgba(59, 130, 246, 0.45);
+            filter: saturate(1.2);
+        }
+
+        .orb-ring {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 255px;
+            height: 255px;
+            border-radius: 50%;
+            border: 1px dashed rgba(148, 163, 184, 0.6);
+            box-shadow: 0 0 50px rgba(15, 23, 42, 0.85) inset;
+        }
+
+        .orb-card {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            transform: translateY(20%);
+            min-width: 220px;
+            background: rgba(15, 23, 42, 0.96);
+            border-radius: 18px;
+            padding: 14px 16px;
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            box-shadow: 0 22px 60px rgba(0,0,0,0.6);
+            font-size: 0.8rem;
+        }
+
+        .orb-card-title {
+            font-size: 0.78rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 4px;
+        }
+
+        .orb-card-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .orb-card-main strong {
+            font-size: 0.88rem;
+            color: #f9fafb;
+        }
+
+        .pill {
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            background: rgba(248, 250, 252, 0.06);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+        }
+
+        .pill span {
+            color: var(--cor-verde);
+        }
+
+        /* CONTEÚDO */
+
+        .content {
+            padding: 40px 46px 40px;
+            background: linear-gradient(to bottom, #f9fafb 0%, #f4f4f5 40%, #ffffff 100%);
+        }
+
+        .intro {
+            background: #fdfcfb;
+            border-radius: 18px;
+            padding: 22px 24px 20px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 12px 34px rgba(148, 163, 184, 0.15);
+            margin-bottom: 34px;
+        }
+
+        .intro h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .intro p {
+            line-height: 1.7;
+            font-size: 0.96rem;
+            color: var(--cor-texto-suave);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 26px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: 1.45rem;
+            color: #0f172a;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .section-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--cor-coral) 0%, var(--cor-verde) 100%);
+            color: #0b1020;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 10px 25px rgba(248, 113, 113, 0.65);
+            flex-shrink: 0;
+        }
+
+        .section-subtitle {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: #6b7280;
+            margin-bottom: 6px;
+        }
+
+        .section > p {
+            font-size: 0.94rem;
+            color: var(--cor-texto-suave);
+            line-height: 1.7;
+            max-width: 760px;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: var(--radius-card);
+            padding: 16px 18px 16px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 12px 30px rgba(148, 163, 184, 0.18);
+        }
+
+        .card h3 {
+            font-size: 0.98rem;
+            margin-bottom: 8px;
+            color: #020617;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.9rem;
+            color: var(--cor-texto-suave);
+            line-height: 1.6;
+        }
+
+        .card li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 4px;
+        }
+
+        .card li::before {
+            content: "•";
+            position: absolute;
+            left: 4px;
+            top: 0;
+            color: var(--cor-coral);
+            font-weight: 700;
+        }
+
+        .pill-small {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            background: rgba(15, 23, 42, 0.03);
+            border: 1px dashed rgba(148, 163, 184, 0.7);
+            color: #4b5563;
+            margin-bottom: 10px;
+        }
+
+        .two-col-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .subsection-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #111827;
+            margin: 10px 0 6px;
+        }
+
+        .highlight-box {
+            margin-top: 16px;
+            background: #ecfeff;
+            border-radius: 16px;
+            padding: 14px 16px;
+            border: 1px solid #67e8f9;
+            font-size: 0.9rem;
+            color: #0f172a;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .step-card {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 14px 16px 14px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--cor-coral) 0%, var(--cor-verde) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: #020617;
+            margin-bottom: 6px;
+        }
+
+        .step-card h3 {
+            font-size: 0.94rem;
+            margin-bottom: 4px;
+            color: #020617;
+        }
+
+        .step-card p {
+            font-size: 0.88rem;
+            color: var(--cor-texto-suave);
+            line-height: 1.6;
+        }
+
+        .mini-note {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 6px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 22px 46px 26px;
+            background: #020617;
+            color: #e5e7eb;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 40px;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-brand {
+            font-family: "Playfair Display", serif;
+            font-size: 1.5rem;
+        }
+
+        .footer-brand span {
+            color: var(--cor-verde);
+        }
+
+        .footer-block {
+            font-size: 0.86rem;
+            line-height: 1.7;
+        }
+
+        .footer-block h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .footer small {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.78rem;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 860px) {
+            .header {
+                grid-template-columns: 1fr;
+                padding: 32px 22px 30px;
+            }
+
+            .header-visual {
+                height: 180px;
+                margin-top: 10px;
+            }
+
+            .content {
+                padding: 30px 22px 30px;
+            }
+
+            .footer {
+                padding: 20px 22px 24px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-main">
+            <div class="brand-tag">
+                <div class="brand-dot"></div>
+                <span>Onboarding Oficial · Take Já</span>
+            </div>
+            <div class="logo-take">TAKE <span>JÁ</span></div>
+            <h1>Onboarding &amp;<br/><span>Configuração Profissional</span></h1>
+            <p class="header-sub">
+                Documento de referência para organizar as informações essenciais, acessos e primeiros passos do projeto de presença digital e manutenção das redes de Joaquim Oliveira.
+            </p>
+            <div class="header-meta">
+                <div><strong>Cliente:</strong> Joaquim Oliveira</div>
+                <div><strong>Projeto:</strong> Autoridade Jurídica &amp; Presença Digital</div>
+                <div><strong>Etapa:</strong> Início de Execução · Fase 1</div>
+            </div>
+        </div>
+        <div class="header-visual">
+            <div class="orb-ring"></div>
+            <div class="orb"></div>
+            <div class="orb-card">
+                <div class="orb-card-title">Painel de Onboarding</div>
+                <div class="orb-card-main">
+                    <div>
+                        <strong>Um ponto de partida claro.</strong>
+                        <div style="font-size:0.78rem;color:#9ca3af;margin-top:2px;">
+                            Tudo o que precisamos para iniciar a operação com segurança e método.
+                        </div>
+                    </div>
+                    <div class="pill">
+                        FASE <span>1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="content">
+        <section class="intro">
+            <h2>O que este documento organiza</h2>
+            <p>
+                Este guia reúne, em um só lugar, todas as informações, acessos e dados que serão solicitados no início do trabalho, além do checklist das primeiras ações que a Take Já executa assim que o projeto é ativado.
+            </p>
+        </section>
+
+        <!-- PARTE 1: INFORMAÇÕES NECESSÁRIAS -->
+        <section class="section">
+            <div class="section-subtitle">Parte 1</div>
+            <div class="section-title">
+                <div class="section-number">1</div>
+                <div>Informações necessárias para início da execução</div>
+            </div>
+            <p>
+                São os dados essenciais para configurar as redes, padronizar a identidade e garantir segurança e controle sobre todos os canais.
+            </p>
+
+            <div class="checklist-grid" style="margin-top:20px;">
+                <article class="card">
+                    <span class="pill-small">Acessos de redes</span>
+                    <h3>Instagram</h3>
+                    <ul>
+                        <li>@ do perfil</li>
+                        <li>Senha</li>
+                        <li>E-mail vinculado</li>
+                        <li>Telefone vinculado</li>
+                        <li>Código de autenticação em 2 fatores (se solicitado)</li>
+                    </ul>
+
+                    <div class="subsection-title">Facebook</div>
+                    <ul>
+                        <li>Login (e-mail)</li>
+                        <li>Senha</li>
+                        <li>Link da página profissional (se existir)</li>
+                        <li>Confirmação do perfil administrador</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <span class="pill-small">Meta &amp; WhatsApp</span>
+                    <h3>Meta Business Suite</h3>
+                    <ul>
+                        <li>E-mail administrador do negócio</li>
+                        <li>Número de WhatsApp a ser conectado</li>
+                        <li>Nome do escritório/advocacia</li>
+                    </ul>
+
+                    <div class="subsection-title">WhatsApp</div>
+                    <ul>
+                        <li>Número profissional</li>
+                        <li>Confirmação se é WhatsApp Business</li>
+                        <li>Frase curta para botão de contato</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <span class="pill-small">Google &amp; YouTube</span>
+                    <h3>Google Meu Negócio</h3>
+                    <ul>
+                        <li>E-mail administrativo</li>
+                        <li>Endereço do escritório</li>
+                        <li>Telefone comercial</li>
+                        <li>Horário de atendimento</li>
+                        <li>Nome da advocacia</li>
+                        <li>Foto de documento (se o Google solicitar validação)</li>
+                    </ul>
+
+                    <div class="subsection-title">YouTube</div>
+                    <ul>
+                        <li>E-mail da conta</li>
+                        <li>Senha</li>
+                        <li>Nome público desejado para o canal</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <span class="pill-small">LinkedIn &amp; Financeiro</span>
+                    <h3>LinkedIn</h3>
+                    <ul>
+                        <li>Login (e-mail)</li>
+                        <li>Senha</li>
+                        <li>Cargo principal a exibir</li>
+                        <li>Áreas de atuação</li>
+                    </ul>
+
+                    <div class="subsection-title">Dados financeiros</div>
+                    <ul>
+                        <li>Nome completo</li>
+                        <li>CPF / CNPJ</li>
+                        <li>E-mail para envio de recibo / nota</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- PARTE 2: IDENTIDADE VISUAL & POSICIONAMENTO -->
+        <section class="section">
+            <div class="section-subtitle">Parte 2</div>
+            <div class="section-title">
+                <div class="section-number">2</div>
+                <div>Identidade visual &amp; posicionamento</div>
+            </div>
+            <p>
+                Com os acessos organizados, a próxima etapa é alinhar a imagem e a narrativa: como o nome aparece, como a marca é vista e quais histórias são contadas nas primeiras apresentações.
+            </p>
+
+            <div class="two-col-list">
+                <div class="card">
+                    <span class="pill-small">Arquivos visuais</span>
+                    <h3>Identidade visual</h3>
+                    <ul>
+                        <li>Logo oficial (arquivo .PNG preferencial)</li>
+                        <li>Foto de perfil para todas as redes</li>
+                        <li>Imagem de capa para Facebook</li>
+                        <li>Banner para YouTube</li>
+                        <li>Capa para LinkedIn (se houver)</li>
+                    </ul>
+                    <p class="mini-note">
+                        Quando não houver fotos definitivas, podem ser usadas imagens temporárias até a produção de material oficial.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <span class="pill-small">Narrativa</span>
+                    <h3>Posicionamento</h3>
+                    <ul>
+                        <li>3 áreas de atuação prioritárias</li>
+                        <li>3 principais dores do público atendido</li>
+                        <li>3 conquistas ou marcos que comunicam autoridade</li>
+                    </ul>
+                    <p class="mini-note">
+                        Esses pontos servem de base para bios, descrições de perfis, destaques e trilhas iniciais de conteúdo.
+                    </p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Envio de conteúdo:</strong> definição do canal preferido para envio de vídeos e materiais (WhatsApp, Google Drive, Dropbox ou outro).
+            </div>
+        </section>
+
+        <!-- PARTE 3: CHECKLIST DE ATIVAÇÃO -->
+        <section class="section">
+            <div class="section-subtitle">Parte 3</div>
+            <div class="section-title">
+                <div class="section-number">3</div>
+                <div>Checklist de ativação após o início do serviço</div>
+            </div>
+            <p>
+                A partir da confirmação do projeto, estas são as etapas que estruturam o início da operação e garantem que todas as peças estejam conectadas.
+            </p>
+
+            <div class="steps-grid">
+                <article class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Estrutura das contas</h3>
+                    <p>
+                        Ajuste e revisão dos perfis de Instagram e Facebook, integração entre as contas, conexão do WhatsApp e configuração do Meta Business com os papéis corretos de administrador e gerenciamento.
+                    </p>
+                </article>
+
+                <article class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Unificação visual</h3>
+                    <p>
+                        Atualização de fotos de perfil, capas e banners para que todas as redes apresentem a mesma identidade, cores e mensagem central.
+                    </p>
+                </article>
+
+                <article class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Canais adicionais</h3>
+                    <p>
+                        Configuração e/ou atualização de Google Meu Negócio, YouTube e LinkedIn com as informações fornecidas, mantendo coerência com a presença principal.
+                    </p>
+                </article>
+
+                <article class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Organização interna</h3>
+                    <p>
+                        Criação da pasta do cliente na estrutura da Take Já, com subdivisões para acessos, identidade visual, vídeos enviados, vídeos finalizados, postagens, pautas e financeiro.
+                    </p>
+                </article>
+
+                <article class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Pauta de conteúdo</h3>
+                    <p>
+                        Definição de temas estratégicos para o primeiro ciclo de postagens, linguagem, frequência de publicações e prioridades de comunicação.
+                    </p>
+                </article>
+
+                <article class="step-card">
+                    <div class="step-number">6</div>
+                    <h3>Fluxo contínuo</h3>
+                    <p>
+                        Início da rotina: envio de vídeos pelo cliente, tratamento completo pela Take Já (edição, legenda, capa, postagem e distribuição) e reuniões periódicas de pauta para ajuste fino da estratégia.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-block">
+            <div class="footer-brand">TAKE <span>JÁ</span></div>
+            <small>Onboarding Oficial · Organização de acessos, dados e primeiros passos para execução estratégica da presença digital.</small>
+        </div>
+        <div class="footer-block">
+            <h4>Projeto</h4>
+            <div>Cliente: Joaquim Oliveira</div>
+            <div>Escopo: Configuração Profissional + Manutenção de Redes</div>
+        </div>
+        <div class="footer-block">
+            <h4>Contato Take Já</h4>
+            <div>E-mail: contato@takeja.site</div>
+            <div>WhatsApp: (67) 9 9815-8005</div>
+            <small>Documento de apoio à apresentação e execução inicial do projeto.</small>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
+"""
+
+path = "/mnt/data/onboarding_takeja_joaquim.html"
+with open(path, "w", encoding="utf-8") as f:
+    f.write(html)
+
+path
