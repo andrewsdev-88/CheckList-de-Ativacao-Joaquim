@@ -1,4 +1,4 @@
-html = r"""<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
@@ -746,10 +746,3 @@ html = r"""<!DOCTYPE html>
 </div>
 </body>
 </html>
-"""
-
-path = "/mnt/data/onboarding_takeja_joaquim.html"
-with open(path, "w", encoding="utf-8") as f:
-    f.write(html)
-
-path
